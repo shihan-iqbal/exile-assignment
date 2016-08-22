@@ -1,0 +1,29 @@
+<section>
+<h1> My Movies </h1>
+<button ui-sref="addMovie"> Add Movie </button>
+<div>
+    <ul>
+        <li ng-repeat="x in vmc.getAllMovies() | orderBy : 'releaseyear':true">
+            <article>
+            <div style="border-style: groove;">
+            <h4> {{x.name + " (" + x.releaseyear + ")" }} </h4>
+               <wbr>
+               <p> {{ x.description}} </p>
+               <input type="hidden" id="releaseyearhidden" ng-model="x.ratings">
+             <button ui-sref="viewMovie({releaseyear:{{x.releaseyear}}})"> View </button>
+                <table>
+                    <tr>
+                        <th ng-repeat='n in [] | range:x.ratings'>
+                            <main-rating-directive/>
+                        </th>
+                    </tr>
+                </table>
+
+            </div>
+            </article>
+        </li>
+
+    </ul>
+</div>
+
+</section>

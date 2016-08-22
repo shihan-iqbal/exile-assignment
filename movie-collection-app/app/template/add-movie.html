@@ -1,0 +1,66 @@
+<section style="border-style : solid; border-width: 1px">
+<form name="movieForm" ng-submit="amc.submitMovie()">
+    <h3>Create Movie</h3>
+    <p>
+        <label for="name">Name</label>
+        <input type="text" id="name" ng-model="amc.form.name">
+    </p>
+    <p>
+        <label for="description">Description</label>
+        <input type="text" id="description" ng-model="amc.form.description">
+    </p>
+    <p>
+        <label for="releaseyear">Release year</label>
+        <input type="number" id="releaseyear"  min="0" ng-model="amc.form.releaseyear" required>
+    </p>
+    <p>
+        <label for="ratings">Ratings</label>
+        <input type="number" id="ratings"  min="0" max="10"  ng-model="amc.form.ratings" required>
+    </p>
+    <p>
+        <label for="language">Language</label>
+        <select id="language" ng-model="amc.form.language">
+            <option value="english">English</option>
+            <option value="french">French</option>
+            <option value="arabic">Arabic</option>
+            <option value="hindi">Hindi</option>
+        </select>
+    </p>
+    </p>
+    <button type="submit"> Save </button>
+    </p>
+</form>
+</section>
+
+<section ng-if="amc.isTrue" style="border-style : solid; border-width: 1px">
+<form name="CharacterForm" ng-submit="amc.submitMovieCharacter()">
+        <h3>Add Character for {{amc.moviename}} ({{amc.releaseyear}})</h3>
+        <input type="hidden" id="releaseyearhidden" ng-model="amc.releaseyear">
+        <p>
+            <label for="character">Character</label>
+            <input type="text" id="character" ng-model="amc.form.character">
+        </p>
+        <p>
+            <label for="actor">Actor</label>
+            <input type="text" id="actor" ng-model="amc.form.actor">
+        </p>
+        </p>
+        <button type="submit"> Add </button>
+        </p>
+
+    <table style="border: 1px solid black; width:50%">
+        <caption>Characters</caption>
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">Character</th>
+            <th style="border: 1px solid black;">Actor</th>
+        </tr>
+       <tr ng-repeat="x in amc.getMovieCharacters(amc.releaseyear) | orderBy : 'character':true">
+            <th>{{x.character}}</th>
+            <th>{{x.actor}}</th>
+        </tr>
+    </table>
+</form>
+</section>
+    <nav>
+        <a ui-sref="index">Home</a>
+    </nav>

@@ -1,0 +1,24 @@
+
+<section>
+<h4>{{vam.movie.name}} ({{vam.movie.releaseyear}})</h4>
+
+ <h3>Language : {{vam.movie.language}}</h3>
+  <wbr>
+  <p>{{vam.movie.description}}</p>
+ <table style="border: 1px solid black; width:50%">
+        <caption>Characters</caption>
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">Character</th>
+            <th style="border: 1px solid black;">Actor</th>
+        </tr>
+        <tr ng-repeat="x in vam.movie.charachters | orderBy : 'character':true">
+            <th>{{x.character}}</th>
+            <th>{{x.actor}}</th>
+    </tr>
+    </table>
+    <rating-directive/>
+</section>
+    <nav>
+        <a ui-sref="index">Home</a>
+    </nav>
+
